@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package gochat;
+
+option go_package = "./proto/gochat";
+
+// 聊天服务定义
+service ChatService {
+  // 聊天（双向流 RPC）
+  rpc Chat(stream ChatMessage) returns (stream ChatMessage) {}
+}
+
+// 聊天消息
+message ChatMessage {
+  string username = 1;    // 发送者用户名
+  string targetname = 2;   // 接收者用户名，为空表示广播
+  string content = 3;     // 消息内容
+}

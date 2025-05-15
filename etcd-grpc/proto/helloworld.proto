@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package helloworld;
+
+// 添加这一行指定生成的Go代码的包路径
+option go_package = "./proto/helloworld";
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
