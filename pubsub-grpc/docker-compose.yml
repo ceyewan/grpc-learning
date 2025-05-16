@@ -1,0 +1,7 @@
+services:
+  # Redis 服务 - 内存型键值数据库，用于消息传递
+  redis:
+    image: redis:latest
+    container_name: pubsub-redis
+    ports:
+      - "6379:6379" # 将 Redis 端口映射到主机
