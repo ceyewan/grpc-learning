@@ -6,9 +6,9 @@ option go_package = "./proto/pubsub";
 
 // PubSub 服务定义
 service PubSub {
-  // 发布消息
-  rpc Publish (PublishRequest) returns (PublishResponse);
-  // 订阅消息
+  // 发布消息 - 客户端流式
+  rpc Publish (stream PublishRequest) returns (PublishResponse);
+  // 订阅消息 - 服务端流式
   rpc Subscribe (SubscribeRequest) returns (stream SubscribeResponse);
 }
 
@@ -21,6 +21,7 @@ message PublishRequest {
 // 发布消息响应
 message PublishResponse {
   bool success = 1;  // 是否成功
+  int32 message_count = 2;  // 成功发布的消息数量
 }
 
 // 订阅消息请求
